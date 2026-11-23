@@ -35,6 +35,37 @@
   $('#reveal').onclick = reveal;
   new IntersectionObserver((es, o) => es.forEach(e => { if (e.isIntersecting) { setTimeout(reveal, 1500); o.disconnect(); } }), { threshold: .5 }).observe(ward);
 
+  // ---- estimator: households = population / persons; rate falls smoothly as the city grows
+  const P = S.pricing, inr = n => '₹' + Math.round(n).toLocaleString('en-IN');
+  const lakh = n => '₹' + (n / 1e5).toFixed(1) + ' lakh';
+  const rateFor = pop => {
+    const t = Math.min(1, Math.max(0, Math.log(pop / P.popLow) / Math.log(P.popHigh / P.popLow)));
+    return Math.max(P.minRate, P.baseRate + P.smallAdj + t * (P.bigAdj - P.smallAdj));
+  };
+  const quote = pop => {
+    const hh = Math.round(pop / P.persons / 1000) * 1000, rate = rateFor(pop), raw = P.cityFee + hh * rate;
+    return { hh, rate, fee: Math.max(P.minFee, raw), min: raw < P.minFee };
+  };
+  const cs = $('#c-state'), cc = $('#c-city'), out = $('#c-out');
+  Object.keys(window.CITIES).forEach(s => cs.add(new Option(s, s)));
+  cs.onchange = () => {
+    cc.length = 1; out.hidden = true;
+    (window.CITIES[cs.value] || []).forEach(([n, p]) => cc.add(new Option(n, p)));
+    cc.disabled = !cs.value;
+  };
+  cc.onchange = () => {
+    out.hidden = !cc.value;
+    if (!cc.value) return;
+    const pop = +cc.value, q = quote(pop);
+    $('#o-pop').textContent = pop.toLocaleString('en-IN');
+    $('#o-hh').textContent = '~' + q.hh.toLocaleString('en-IN');
+    $('#o-rate').textContent = '₹' + q.rate.toFixed(2);
+    $('#o-fee').textContent = lakh(q.fee);
+    $('#o-year').textContent = lakh(q.fee * 12);
+    $('#o-min').hidden = !q.min;
+    $('#f-city').value = cc.selectedOptions[0].text;
+  };
+
   // ---- form
   const f = $('#form'), st = $('#status');
   const say = (t, c) => { st.textContent = t; st.className = c; };

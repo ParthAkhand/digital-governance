@@ -129,6 +129,33 @@
 </section>
 <!-- PLACEHOLDER: "Why Human Matrix" credentials section stays out until the owner confirms them in writing. -->
 
+<section id="estimate">
+  <div class="wrap split">
+    <div>
+      <div class="eyebrow" data-i18n="e_eyebrow">Indicative estimate</div>
+      <h2 data-i18n="e_h">What it would cost for your city</h2>
+      <p class="lede" data-i18n="e_p">Priced per household per month, so it scales with the size of your city. Pick your state and city for an indicative figure.</p>
+    </div>
+    <div class="formcard" id="calc">
+      <label for="c-state" data-i18n="e_state">State</label>
+      <select id="c-state"><option value="" data-i18n="e_pick_s">Select state</option></select>
+      <label for="c-city" data-i18n="e_city">City</label>
+      <select id="c-city" disabled><option value="" data-i18n="e_pick_c">Select city</option></select>
+      <div id="c-out" hidden>
+        <dl class="est">
+          <div><dt data-i18n="e_pop">Population (Census 2011)</dt><dd id="o-pop"></dd></div>
+          <div><dt data-i18n="e_hh">Households (approx.)</dt><dd id="o-hh"></dd></div>
+          <div><dt data-i18n="e_rate">Rate per household per month</dt><dd id="o-rate"></dd></div>
+          <div class="big"><dt data-i18n="e_month">Monthly fee, before GST</dt><dd id="o-fee"></dd></div>
+          <div><dt data-i18n="e_year">Annual value, before GST</dt><dd id="o-year"></dd></div>
+        </dl>
+        <p class="note" id="o-min" hidden data-i18n="e_min">The monthly minimum applies to a city of this size.</p>
+      </div>
+      <p class="note" data-i18n="e_note">Indicative only: households are estimated from Census 2011 population. A firm quote follows the half-day visit.</p>
+    </div>
+  </div>
+</section>
+
 <section id="visit">
   <div class="wrap split">
     <div>
@@ -164,6 +191,7 @@
 <a class="btn sticky" href="#visit" data-i18n="cta">Request a visit</a>
 
 <script src="config.js"></script>
+<script src="cities.js"></script>
 <script src="app.js"></script>
 </body>
 </html>
