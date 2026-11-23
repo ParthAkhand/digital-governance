@@ -1,0 +1,228 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>City PMU: one verified picture of your city's sanitation</title>
+<meta name="description" content="One verified picture for the Commissioner every week: what each contractor or zone reported, what an independent field team found, and what to do about the gap.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Devanagari:wght@400;600&family=Noto+Sans:wght@400;600;700&family=Source+Serif+4:wght@600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<script>document.documentElement.classList.add('js')</script>
+</head>
+<body>
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="#top"><i></i><span data-brand></span></a>
+    <div class="bar-actions">
+      <button id="lang" class="btn ghost" type="button" aria-label="Language">हिंदी</button>
+      <a class="btn" href="#visit" data-i18n="cta">Request a visit</a>
+    </div>
+  </div>
+</header>
+
+<main id="top">
+<section class="hero">
+  <div class="wrap">
+    <div class="eyebrow" data-i18n="eyebrow">For the Municipal Commissioner</div>
+    <h1 data-i18n="h1"><span data-brand></span>: one verified picture of your city's sanitation, every week</h1>
+    <p class="lede" data-i18n="lede"><span data-brand></span> gives the Commissioner one verified picture every week: what each contractor or zone reported, what an independent field team found, and what to do about the gap. It is live within 30 days of the work order.</p>
+    <div class="cta">
+      <a class="btn" href="#visit" data-i18n="cta">Request a visit</a>
+      <a class="btn ghost" href="#weekly" data-i18n="seeweek">See a ward, one week</a>
+    </div>
+  </div>
+</section>
+
+<section id="problem">
+  <div class="wrap">
+    <div class="eyebrow" data-i18n="p_eyebrow">The problem it solves</div>
+    <h2 data-i18n="p_h">Every city runs on reports that nobody independent checks.</h2>
+    <div class="cols3">
+      <div class="card"><div class="n">01</div><h3 data-i18n="p1h">Reports and the ground differ.</h3><p data-i18n="p1">Contractors and zones report their own work. No independent team verifies it daily.</p></div>
+      <div class="card"><div class="n">02</div><h3 data-i18n="p2h">Decisions run on claims.</h3><p data-i18n="p2">Bills are passed and staff are assessed on self-reported figures, so a review becomes one opinion against another.</p></div>
+      <div class="card"><div class="n">03</div><h3 data-i18n="p3h">The gap costs marks.</h3><p data-i18n="p3">The Swachh Survekshan toolkit deducts marks when a city's portal claims do not match the field assessment. PRAGATI-50 cities are tracked on 48 indicators.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="weekly">
+  <div class="wrap">
+    <div class="eyebrow" data-i18n="w_eyebrow">What you see every week</div>
+    <h2 data-i18n="w_h">One page for each ward, contractor and zone: what was reported, and what our field team found.</h2>
+    <div class="ward" id="ward">
+      <div class="ward-head">
+        <h3 data-i18n="w_title">Ward 23, one week</h3>
+        <span class="tag" data-i18n="illus">Illustrative</span>
+      </div>
+      <div class="legend"><span><b style="background:var(--reported)"></b><span data-i18n="rep">Reported</span></span><span><b style="background:var(--accent)"></b><span data-i18n="ver">Verified</span></span></div>
+      <div class="row" data-rep="96" data-ver="81" data-max="100" data-unit="%"><div class="name" data-i18n="m1">Door-to-door coverage</div><div class="tracks"></div><span class="gap" data-i18n="g1">15 points</span></div>
+      <div class="row" data-rep="100" data-ver="88" data-max="100" data-unit="%"><div class="name" data-i18n="m2">Sweeping beats completed</div><div class="tracks"></div><span class="gap" data-i18n="g2">12 points</span></div>
+      <div class="row" data-rep="2" data-ver="7" data-max="10" data-unit=""><div class="name" data-i18n="m3">Garbage points open</div><div class="tracks"></div><span class="gap" data-i18n="g3">5 more</span></div>
+      <div class="row" data-rep="92" data-ver="74" data-max="100" data-unit=""><div class="name" data-i18n="m4">Public toilet score</div><div class="tracks"></div><span class="gap" data-i18n="g4">18 points</span></div>
+      <div class="row" data-rep="95" data-ver="79" data-max="100" data-unit="%"><div class="name" data-i18n="m5">Complaints closed in time</div><div class="tracks"></div><span class="gap" data-i18n="g5">16 points</span></div>
+      <div class="ward-foot">
+        <span data-i18n="w_note">These figures are illustrative. After a half-day visit we show this page for two of your own wards.</span>
+        <button class="btn ghost" id="reveal" type="button" data-i18n="reveal">Show what our field team found</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="independent">
+  <div class="wrap">
+    <div class="eyebrow" data-i18n="i_eyebrow">Why it has to be independent</div>
+    <h2 data-i18n="i_h">A verified picture can only come from a team with no stake in it.</h2>
+    <ul class="list">
+      <li data-i18n="i1">The team that wrote the plan cannot certify how it was carried out.</li>
+      <li data-i18n="i2">A dashboard shows what contractors and departments enter. It does not check it.</li>
+      <li data-i18n="i3">An agency working in a ward cannot inspect that ward.</li>
+    </ul>
+    <p data-i18n="i4"><span data-brand></span> reports only to the Commissioner and runs none of the services it checks. It comes as one contract with one accountable team, and the first verified review is due on day 30.</p>
+  </div>
+</section>
+
+<section id="fit">
+  <div class="wrap">
+    <div class="eyebrow" data-i18n="f_eyebrow">It fits how your city works</div>
+    <h2 data-i18n="f_h">The method is the same whether the city uses contractors, its own fleet and staff, or both. Only the party being checked changes.</h2>
+    <table class="tbl">
+      <thead><tr><th data-i18n="f_c1">The city runs services through</th><th data-i18n="f_c2">Who reports</th><th><span data-i18n="f_c3">What the PMU issues</span></th></tr></thead>
+      <tbody>
+        <tr><td data-i18n="f1a">Contractors</td><td data-i18n="f1b">Each contractor</td><td data-i18n="f1c">A performance certificate, with the deduction the contract allows, before the bill is passed</td></tr>
+        <tr><td data-i18n="f2a">Its own fleet and staff</td><td data-i18n="f2b">Each zone and ward supervisor</td><td data-i18n="f2c">A verified weekly score for every ward and supervisor</td></tr>
+        <tr><td data-i18n="f3a">Both</td><td data-i18n="f3b">Contractors and zones</td><td data-i18n="f3c">Both, on one screen</td></tr>
+      </tbody>
+    </table>
+    <p class="note" data-i18n="f_note">The certificate and the score are recommendations. Payment and disciplinary authority stay with the city's officers.</p>
+  </div>
+</section>
+
+<section id="gets">
+  <div class="wrap">
+    <div class="eyebrow" data-i18n="g_eyebrow">What the Commissioner gets</div>
+    <h2 data-i18n="g_h">The same outputs arrive on the same calendar in every city.</h2>
+    <table class="tbl">
+      <thead><tr><th data-i18n="g_c1">When</th><th data-i18n="g_c2">What arrives</th></tr></thead>
+      <tbody>
+        <tr><td data-i18n="c1a">Day 14</td><td data-i18n="c1b">A register of every contract and duty roster</td></tr>
+        <tr><td data-i18n="c2a">Day 15</td><td data-i18n="c2b">Dashboard live, with logins for the Commissioner, zonal officers and each contractor</td></tr>
+        <tr><td data-i18n="c3a">Day 30</td><td data-i18n="c3b">City baseline report, the first scorecard and a ward-wise action plan</td></tr>
+        <tr><td data-i18n="c4a">Every day</td><td data-i18n="c4b">Independent, geo-tagged checks in every ward; every closed complaint re-inspected</td></tr>
+        <tr><td data-i18n="c5a">Every week</td><td data-i18n="c5b">A review pack: the city scorecard and one page per contractor or zone</td></tr>
+        <tr><td data-i18n="c6a">Every month</td><td data-i18n="c6b">Performance certificates or ward scores; Swachhatam portal data checked before upload</td></tr>
+        <tr><td data-i18n="c7a">Before each state or ministry review</td><td data-i18n="c7b">A brief with the verified position</td></tr>
+      </tbody>
+    </table>
+    <h3 style="margin-top:44px" data-i18n="sc_h">The scorecard. Every measure is shown twice: as reported and as verified.</h3>
+    <table class="tbl">
+      <thead><tr><th data-i18n="sc_c1">Area</th><th data-i18n="sc_c2">Measures</th></tr></thead>
+      <tbody>
+        <tr><td data-i18n="s1a">Collection and transport</td><td data-i18n="s1b">Door-to-door coverage, source segregation, vehicle trips</td></tr>
+        <tr><td data-i18n="s2a">Visible cleanliness</td><td data-i18n="s2b">Sweeping beats, garbage vulnerable points, litter bins, drains</td></tr>
+        <tr><td data-i18n="s3a">Sanitation</td><td data-i18n="s3b">Public and community toilets</td></tr>
+        <tr><td data-i18n="s4a">Processing</td><td data-i18n="s4b">Tonnes processed against tonnes received</td></tr>
+        <tr><td data-i18n="s5a">Citizens</td><td data-i18n="s5b">Complaints closed in time, share reopened</td></tr>
+        <tr><td data-i18n="s6a">Workforce</td><td data-i18n="s6b">Staff present against staff sanctioned or contracted</td></tr>
+        <tr><td data-i18n="s7a">Awareness</td><td data-i18n="s7b">IEC activities held against planned</td></tr>
+      </tbody>
+    </table>
+    <p class="note" data-i18n="sc_note">These measures cover seven of the ten Swachh Survekshan 2025-26 sections, which carry 8,000 of the 10,500 field marks.</p>
+  </div>
+</section>
+
+<section id="thirty">
+  <div class="wrap">
+    <div class="eyebrow" data-i18n="t_eyebrow">Live in 30 days</div>
+    <h2 data-i18n="t_h">Work order to first Commissioner review in 30 days</h2>
+    <div class="phases">
+      <div class="phase"><h3 data-i18n="ph1">Mobilise</h3><small data-i18n="ph1d">Days 1-5</small><ul><li data-i18n="ph1a">Team lead on site</li><li data-i18n="ph1b">Contracts, rosters in</li><li data-i18n="ph1c">City data collected</li></ul></div>
+      <div class="phase"><h3 data-i18n="ph2">Configure</h3><small data-i18n="ph2d">Days 6-14</small><ul><li data-i18n="ph2a">Wards and beats mapped</li><li data-i18n="ph2b">Task Force trained</li></ul></div>
+      <div class="phase"><h3 data-i18n="ph3">Go live</h3><small data-i18n="ph3d">Days 15-21</small><ul><li data-i18n="ph3a">Ward checks start</li><li data-i18n="ph3b">Daily reporting starts</li><li data-i18n="ph3c">First weekly review</li></ul></div>
+      <div class="phase"><h3 data-i18n="ph4">Baseline</h3><small data-i18n="ph4d">Days 22-30</small><ul><li data-i18n="ph4a">Baseline report</li><li data-i18n="ph4b">City scorecard</li><li data-i18n="ph4c">Ward action plan</li></ul></div>
+    </div>
+    <div class="gates"><span data-i18n="gt1">Day 0: work order and letter</span><span data-i18n="gt2">Day 15: dashboard live</span><span class="last" data-i18n="gt3">Day 30: first Commissioner review</span></div>
+    <p class="note" data-i18n="t_note">The dashboard goes live on day 15 with Task Force checks. Reporting by contractors and zones joins in the third week, and day 30 is the first full review.</p>
+  </div>
+</section>
+
+<section id="need">
+  <div class="wrap">
+    <div class="eyebrow" data-i18n="n_eyebrow">What we need from the city</div>
+    <h2 data-i18n="n_h">The 30 days start when the first three items are in hand.</h2>
+    <ol class="list">
+      <li data-i18n="n1">A work order, and a letter from the Commissioner naming the PMU as the monitoring unit with access to contractor and zone data.</li>
+      <li data-i18n="n2">Copies of every SWM contract in force, and the duty rosters for the city's own staff and vehicles.</li>
+      <li data-i18n="n3">Ward, beat, route, vehicle and asset data, in the format we send.</li>
+      <li data-i18n="n4">A written direction to each contractor and zone to report on the dashboard within 15 days.</li>
+      <li data-i18n="n5">A nodal officer, seating and internet for the team, and a fixed weekly review slot with the Commissioner.</li>
+    </ol>
+  </div>
+</section>
+
+<section id="not" class="neg">
+  <div class="wrap">
+    <div class="eyebrow" data-i18n="x_eyebrow">What the PMU does not do</div>
+    <h2 data-i18n="x_h">Clear limits, so the verification stays independent.</h2>
+    <div class="cols3">
+      <div class="card"><p data-i18n="x1">It does not run any service, hire or pay field staff, or pass bills.</p></div>
+      <div class="card"><p data-i18n="x2">It does not supply hardware such as cameras, GPS devices or video walls.</p></div>
+      <div class="card"><p data-i18n="x3">It does not check its own group's work. Where Human Matrix holds any other contract in the city, that contract is reviewed by the city's officers, not by the PMU.</p></div>
+      <div class="card"><p data-i18n="x4">It does not design a project and then bid for it.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="why">
+  <div class="wrap">
+    <div class="eyebrow" data-i18n="y_eyebrow">Why Human Matrix</div>
+    <!-- PLACEHOLDER: credentials stay out until the owner confirms them in writing. -->
+    <div class="ph" data-i18n="y_ph">Credentials to be confirmed.</div>
+  </div>
+</section>
+
+<section id="commercials">
+  <div class="wrap">
+    <div class="eyebrow" data-i18n="m_eyebrow">Commercials and next step</div>
+    <p class="lede" data-i18n="m1p">The fee is priced per household per month, so it scales with the size of the city. A one-page quote for your city accompanies this note.</p>
+    <p class="lede" data-i18n="m2p">The city engages the PMU through its own tender. We share a model scope of work and evaluation framework that the city can adapt.</p>
+    <p class="lede"><strong data-i18n="m3p">Next step.</strong> <span data-i18n="m4p">A half-day visit to the control room and two wards. Within a week we return a city sheet with what we saw and a firm quote.</span></p>
+  </div>
+</section>
+
+<section id="visit">
+  <div class="wrap">
+    <div class="eyebrow" data-i18n="v_eyebrow">Request a visit</div>
+    <h2 data-i18n="v_h">A half-day visit to the control room and two wards.</h2>
+    <form class="formcard" id="form" novalidate>
+      <label for="f-name" data-i18n="l_name">Your name</label>
+      <input id="f-name" name="name" autocomplete="name" required>
+      <label for="f-role" data-i18n="l_role">Designation</label>
+      <input id="f-role" name="designation" autocomplete="organization-title" required>
+      <label for="f-city" data-i18n="l_city">City</label>
+      <input id="f-city" name="city" autocomplete="address-level2" required>
+      <label for="f-phone" data-i18n="l_phone">Mobile number</label>
+      <input id="f-phone" name="mobile" type="tel" inputmode="tel" autocomplete="tel" required>
+      <label for="f-time" data-i18n="l_time">Preferred time to call</label>
+      <select id="f-time" name="preferred_time">
+        <option value="morning" data-i18n="t_m">Morning</option>
+        <option value="afternoon" data-i18n="t_a">Afternoon</option>
+        <option value="evening" data-i18n="t_e">Evening</option>
+      </select>
+      <div class="hp" aria-hidden="true"><label>Leave empty <input name="website" tabindex="-1" autocomplete="off"></label></div>
+      <label class="check"><input type="checkbox" name="consent" required><span data-i18n="l_consent">I agree to be contacted about this visit. My details will be used only for that.</span></label>
+      <button class="btn" type="submit" style="margin-top:18px" data-i18n="send">Request a visit</button>
+      <div id="status" role="status" aria-live="polite"></div>
+    </form>
+  </div>
+</section>
+</main>
+
+<footer><div class="wrap"><span data-brand></span> · <span id="company"></span></div></footer>
+<a class="btn sticky" href="#visit" data-i18n="cta">Request a visit</a>
+
+<script src="config.js"></script>
+<script src="app.js"></script>
+</body>
+</html>

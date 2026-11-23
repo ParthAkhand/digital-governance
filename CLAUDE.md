@@ -37,7 +37,7 @@ Audience: Municipal Commissioners and senior city officers (Hindi + English, mos
 
 ## Stack decisions
 - Plain static HTML/CSS/JS in `site/`. No framework, no build step. Hosted on GitHub Pages.
-- Copy lives in `site/i18n/en.json` and `hi.json`; markup only has keys. Language toggle, remembered locally.
+- English copy lives in the HTML (`data-i18n` keys); Hindi comes only from `site/i18n/hi.json`, supplied by the owner. The language toggle stays hidden while that file is empty.
 - Brand/name/logo in `site/config.js`; colours, type, spacing as CSS variables.
 - PDFs (leave-behind, talk card) and slide deck render from the same HTML/CSS with headless Chrome, so copy never forks.
 - Form posts to a Google Apps Script web app that appends a row to the pipeline sheet and sends the alert. Sheet URL and alert channel are TBD from Pavanjeet.
