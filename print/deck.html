@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Phone deck</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Devanagari:wght@400;600&family=Noto+Sans:wght@400;600;700&family=Source+Serif+4:wght@600;700&display=swap" rel="stylesheet">
+<style>
+/* Six portrait 9:16 slides, one per PDF page. Same tokens and copy as the landing page. */
+@page{size:1080px 1920px;margin:0}
+:root{--ink:#14213d;--muted:#5b6475;--line:#d9d5c9;--accent:#1f4fa3;--soft:#e6edf9;--warn:#a4452c;--rep:#9aa1ae;--serif:"Source Serif 4",Georgia,serif;--sans:"Noto Sans","Noto Sans Devanagari",sans-serif}
+*{box-sizing:border-box}
+html,body{margin:0;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+body{font:400 40px/1.5 var(--sans);color:var(--ink)}
+.s{width:1080px;height:1920px;padding:96px 84px 84px;background:#f7f5f0;display:flex;flex-direction:column;overflow:hidden;page-break-after:always}
+.s:last-child{page-break-after:auto}
+h1,h2,h3{font-family:var(--serif);margin:0;line-height:1.18}
+h1{font-size:100px;font-weight:600}
+h2{font-size:68px;font-weight:600}
+h3{font-size:46px;font-weight:600;margin-bottom:10px}
+p{margin:0}
+.brand{font:700 44px var(--serif)}.brand i{display:inline-block;width:26px;height:26px;background:var(--accent);transform:rotate(45deg);margin-right:22px}
+.eyebrow{font:600 30px var(--sans);letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin-bottom:28px}
+.lede{font-size:46px;color:var(--muted);margin-top:44px}
+.grow{flex:1;display:flex;flex-direction:column;justify-content:center;gap:28px}
+.card{background:#fff;border:2px solid var(--line);border-left:10px solid var(--accent);border-radius:16px;padding:36px 40px}
+.card p{color:var(--muted);font-size:40px}
+.foot{display:flex;justify-content:space-between;font-size:30px;color:var(--muted);border-top:2px solid var(--line);padding-top:28px}
+/* ward slide */
+.leg{display:flex;gap:44px;font-size:34px;color:var(--muted);margin:30px 0 8px}.leg b{display:inline-block;width:28px;height:28px;border-radius:6px;margin-right:12px;vertical-align:-3px}
+.w{padding:16px 0 18px;border-top:2px solid var(--line)}
+.w .n{font-weight:600;font-size:38px;line-height:1.3;margin-bottom:6px}
+.t{display:grid;grid-template-columns:1fr 130px;align-items:center;gap:22px;margin-top:4px}
+.w{position:relative}
+.w .gap{position:absolute;right:0;top:12px;margin:0;line-height:1.4}
+.bar{height:26px;background:var(--soft);border-radius:13px;overflow:hidden}.bar span{display:block;height:100%;border-radius:13px}
+.t em{font-style:normal;font-weight:700;text-align:right;font-size:40px}
+.r span{background:var(--rep)}.v span{background:var(--accent)}.v em{color:var(--accent)}.r em{color:var(--muted)}
+.gap{display:inline-block;margin-top:14px;font:600 32px var(--sans);color:var(--warn);background:#f4e4de;border-radius:99px;padding:2px 22px}
+.note{font-size:32px;color:var(--muted);margin-top:26px}
+/* 30 days */
+.ph{display:grid;grid-template-columns:200px 1fr;gap:0 30px;background:#fff;border:2px solid var(--line);border-radius:16px;padding:30px 36px;align-items:center}
+.ph .d{font:700 34px var(--sans);color:var(--accent);white-space:nowrap}
+.ph.last{background:var(--accent);color:#fff;border-color:var(--accent)}.ph.last .d,.ph.last p{color:#fff}
+.ph p{font-size:36px;color:var(--muted)}
+/* close */
+.cta{background:var(--accent);color:#fff;border-radius:20px;padding:56px 56px}.cta h2{color:#fff}.cta p{font-size:42px;margin-top:28px;opacity:.95}
+</style>
+</head>
+<body>
+
+<!-- 1 -->
+<div class="s">
+  <div class="brand"><i></i><span data-brand></span></div>
+  <div class="grow">
+    <h1>One verified picture of your city's sanitation, every week</h1>
+    <p class="lede">What each contractor or zone reported. What an independent field team found. What to do about the gap. Live within 30 days of the work order.</p>
+  </div>
+  <div class="foot"><span data-brand></span><span>1 / 6</span></div>
+</div>
+
+<!-- 2 -->
+<div class="s">
+  <div class="brand"><i></i><span data-brand></span></div>
+  <div class="grow">
+    <div><div class="eyebrow">The problem</div><h2>Every city runs on reports that nobody independent checks.</h2></div>
+    <div class="card"><h3>Reports and the ground differ.</h3><p>Contractors and zones report their own work. No independent team verifies it daily.</p></div>
+    <div class="card"><h3>Decisions run on claims.</h3><p>Bills are passed and staff are assessed on self-reported figures, so a review becomes one opinion against another.</p></div>
+    <div class="card"><h3>The gap costs marks.</h3><p>The Swachh Survekshan toolkit deducts marks when a city's portal claims do not match the field assessment.</p></div>
+  </div>
+  <div class="foot"><span data-brand></span><span>2 / 6</span></div>
+</div>
+
+<!-- 3 -->
+<div class="s">
+  <div class="brand"><i></i><span data-brand></span></div>
+  <div class="grow" style="justify-content:flex-start;gap:0;padding-top:36px">
+    <div class="eyebrow">What you see every week</div>
+    <h2>Every measure, twice: as reported, and as verified.</h2>
+    <div class="leg"><span><b style="background:var(--rep)"></b>Reported</span><span><b style="background:var(--accent)"></b>Verified</span><span style="margin-left:auto;color:var(--warn);font-weight:600">ILLUSTRATIVE</span></div>
+    <div class="w"><div class="n">Door-to-door coverage</div><div class="t r"><div class="bar"><span style="width:96%"></span></div><em>96%</em></div><div class="t v"><div class="bar"><span style="width:81%"></span></div><em>81%</em></div><span class="gap">15 points</span></div>
+    <div class="w"><div class="n">Sweeping beats completed</div><div class="t r"><div class="bar"><span style="width:100%"></span></div><em>100%</em></div><div class="t v"><div class="bar"><span style="width:88%"></span></div><em>88%</em></div><span class="gap">12 points</span></div>
+    <div class="w"><div class="n">Garbage points open</div><div class="t r"><div class="bar"><span style="width:20%"></span></div><em>2</em></div><div class="t v"><div class="bar"><span style="width:70%"></span></div><em>7</em></div><span class="gap">5 more</span></div>
+    <div class="w"><div class="n">Public toilet score</div><div class="t r"><div class="bar"><span style="width:92%"></span></div><em>92</em></div><div class="t v"><div class="bar"><span style="width:74%"></span></div><em>74</em></div><span class="gap">18 points</span></div>
+    <div class="w"><div class="n">Complaints closed in time</div><div class="t r"><div class="bar"><span style="width:95%"></span></div><em>95%</em></div><div class="t v"><div class="bar"><span style="width:79%"></span></div><em>79%</em></div><span class="gap">16 points</span></div>
+    <p class="note">Ward 23, one week. Illustrative figures. After a half-day visit we show this page for two of your own wards.</p>
+  </div>
+  <div class="foot"><span data-brand></span><span>3 / 6</span></div>
+</div>
+
+<!-- 4 -->
+<div class="s">
+  <div class="brand"><i></i><span data-brand></span></div>
+  <div class="grow">
+    <div><div class="eyebrow">Why it has to be independent</div><h2>A verified picture can only come from a team with no stake in it.</h2></div>
+    <div class="card"><p style="color:var(--ink)">The team that wrote the plan cannot certify how it was carried out.</p></div>
+    <div class="card"><p style="color:var(--ink)">A dashboard shows what contractors and departments enter. It does not check it.</p></div>
+    <div class="card"><p style="color:var(--ink)">An agency working in a ward cannot inspect that ward.</p></div>
+    <p class="lede" style="margin-top:12px"><span data-brand></span> reports only to you and runs none of the services it checks. One contract, one accountable team.</p>
+  </div>
+  <div class="foot"><span data-brand></span><span>4 / 6</span></div>
+</div>
+
+<!-- 5 -->
+<div class="s">
+  <div class="brand"><i></i><span data-brand></span></div>
+  <div class="grow">
+    <div><div class="eyebrow">Live in 30 days</div><h2>From work order to first full review in 30 days</h2></div>
+    <div class="ph"><span class="d">Days 1-5</span><div><h3>Mobilise</h3><p>Team on site, contracts and city data in</p></div></div>
+    <div class="ph"><span class="d">Days 6-14</span><div><h3>Configure</h3><p>Wards and beats mapped</p></div></div>
+    <div class="ph"><span class="d">Days 15-21</span><div><h3>Go live</h3><p>Dashboard live, ward checks and daily reporting start</p></div></div>
+    <div class="ph last"><span class="d">Days 22-30</span><div><h3>Baseline</h3><p>Baseline report, city scorecard, ward action plan</p></div></div>
+  </div>
+  <div class="foot"><span data-brand></span><span>5 / 6</span></div>
+</div>
+
+<!-- 6 -->
+<div class="s">
+  <div class="brand"><i></i><span data-brand></span></div>
+  <div class="grow">
+    <div class="cta">
+      <div class="eyebrow" style="color:#cfe0ff">Next step</div>
+      <h2>A half-day visit to the control room and two wards.</h2>
+      <p>Within a week we return a city sheet with what we saw and a firm quote. Priced per household per month, so it scales with the size of your city.</p>
+    </div>
+    <p id="contact" class="lede" style="font-weight:600;color:var(--ink)"></p>
+  </div>
+  <div class="foot"><span data-brand></span><span>6 / 6</span></div>
+</div>
+
+<script src="../site/config.js"></script>
+<script>
+document.querySelectorAll('[data-brand]').forEach(e=>e.textContent=SITE.brand);
+document.getElementById('contact').textContent=SITE.fallbackContact?'To fix the visit: '+SITE.fallbackContact:'';
+</script>
+</body>
+</html>
