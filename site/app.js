@@ -33,7 +33,7 @@
   });
   const ward = $('#ward'), reveal = () => ward.classList.add('revealed');
   $('#reveal').onclick = reveal;
-  new IntersectionObserver((es, o) => es.forEach(e => { if (e.isIntersecting) { setTimeout(reveal, 900); o.disconnect(); } }), { threshold: .6 }).observe(ward);
+  new IntersectionObserver((es, o) => es.forEach(e => { if (e.isIntersecting) { setTimeout(reveal, 1500); o.disconnect(); } }), { threshold: .5 }).observe(ward);
 
   // ---- form
   const f = $('#form'), st = $('#status');
