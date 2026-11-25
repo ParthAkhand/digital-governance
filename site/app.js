@@ -35,6 +35,19 @@
   $('#reveal').onclick = reveal;
   new IntersectionObserver((es, o) => es.forEach(e => { if (e.isIntersecting) { setTimeout(reveal, 1500); o.disconnect(); } }), { threshold: .5 }).observe(ward);
 
+  // ---- case tracker: step through the status flow (illustrative; nothing is saved)
+  const tr = $$('#track li'), tn = $('#track-next'); let at = 0;
+  const showStep = () => {
+    tr.forEach((li, i) => { li.classList.toggle('done', i < at); li.classList.toggle('now', i === at); });
+    $('#track-note').textContent = tr[at].querySelector('span').textContent;
+    tn.dataset.last = at === tr.length - 1 ? '1' : '';
+    tn.textContent = at === tr.length - 1 ? 'Start again' : 'Move to next step';
+  };
+  tn.onclick = () => { at = (at + 1) % tr.length; showStep(); };
+  tr.forEach((li, i) => li.onclick = () => { at = i; showStep(); });
+  showStep();
+  if (S.demoUrl) { const d = $('#demo-link'); d.href = S.demoUrl; d.hidden = false; }
+
   // ---- estimator: households = population / persons; rate falls smoothly as the city grows
   const P = S.pricing, inr = n => '₹' + Math.round(n).toLocaleString('en-IN');
   const lakh = n => '₹' + (n / 1e5).toFixed(1) + ' lakh';

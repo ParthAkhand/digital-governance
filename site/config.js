@@ -2,6 +2,7 @@
 window.SITE = {
   brand: "City PMU",
   company: "Human Matrix", // footer only; confirm with owner
+  demoUrl: "https://matrixtrackdemo.vercel.app", // clickable demo, fictional city; empty hides the link
   // Apps Script web-app URL that appends to the pipeline sheet and alerts the closer. Set at deploy; never commit a real one.
   formEndpoint: "",
   fallbackContact: "", // phone/WhatsApp shown if the form fails; set at deploy
