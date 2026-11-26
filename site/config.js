@@ -4,7 +4,7 @@ window.SITE = {
   company: "Human Matrix", // footer only; confirm with owner
   demoUrl: "https://matrixtrackdemo.vercel.app", // clickable demo, fictional city; empty hides the link
   // Apps Script web-app URL that appends to the pipeline sheet and alerts the closer. Set at deploy; never commit a real one.
-  formEndpoint: "",
+  formEndpoint: "https://script.google.com/macros/s/AKfycbzEbi1s6yhJ_ozSJWjnJwc4iaENbdGnbgBZ6EMaB-6xIphEtCBMVonEimbQqfFsYFPy/exec",
   fallbackContact: "", // phone/WhatsApp shown if the form fails; set at deploy
   // Indicative tariff for the estimator. DRAFT until the owner confirms. Rupees, before GST.
   pricing: {
