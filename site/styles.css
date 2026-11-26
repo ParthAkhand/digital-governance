@@ -151,9 +151,11 @@ section:not(.hero){padding:52px 0}
 [role=tablist]{display:none}
 
 /* timeline */
-.timeline{list-style:none;margin:28px 0 0;padding:0 0 0 22px;border-left:2px solid var(--line)}
+.timeline{list-style:none;margin:28px 0 0;padding:0 0 0 22px}
 .timeline li{position:relative;padding:0 0 22px 18px}
 .timeline li::before{content:"";position:absolute;left:-31px;top:6px;width:14px;height:14px;border-radius:50%;background:var(--paper);border:2px solid var(--accent)}
+.timeline li:not(:last-child)::after{content:"";position:absolute;left:-25px;top:13px;bottom:-13px;width:2px;background:var(--line)}
+.timeline li::before{z-index:1}
 .timeline li.hl::before{background:var(--accent)}
 .timeline b{display:block;font:600 1.1rem var(--serif)}
 .timeline span{color:var(--muted)}
