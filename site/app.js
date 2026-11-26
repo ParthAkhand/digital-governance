@@ -4,7 +4,7 @@
   // ---- brand: one source of truth
   const brandize = () => $$('[data-brand]').forEach(e => e.textContent = S.brand);
   document.title = document.title.replace('City PMU', S.brand);
-  $('#company').textContent = S.company;
+  $$('[data-company]').forEach(e => e.textContent = S.company);
 
   // ---- language: English lives in the HTML; Hindi comes only from i18n/hi.json (owner-supplied).
   // The toggle stays hidden until hi.json has content, so we never ship invented Hindi.
@@ -25,28 +25,32 @@
     if (saved === 'hi') setLang('hi', hi);
   }).catch(() => {});
 
-  // ---- ward gap: bars + reveal
-  $$('.row[data-rep]').forEach(r => {
-    const { rep, ver, max, unit } = r.dataset;
-    r.querySelector('.tracks').innerHTML = [['rep', rep], ['ver', ver]].map(([k, v]) =>
-      `<div class="track ${k}"><div class="bar" aria-hidden="true"><span style="--w:${v / max * 100}%"></span></div><em>${v}${unit}</em></div>`).join('');
-  });
-  const ward = $('#ward'), reveal = () => ward.classList.add('revealed');
-  $('#reveal').onclick = reveal;
-  new IntersectionObserver((es, o) => es.forEach(e => { if (e.isIntersecting) { setTimeout(reveal, 1500); o.disconnect(); } }), { threshold: .5 }).observe(ward);
+  // ---- ward 23: Reported / Verified toggle. Without JS the full table shows.
+  const ward = $('#ward'), bR = $('#b-rep'), bV = $('#b-ver'); let touched = false;
+  const showVer = on => { ward.classList.toggle('verified', on); bV.setAttribute('aria-pressed', on); bR.setAttribute('aria-pressed', !on); };
+  bR.onclick = () => { touched = true; showVer(false); };
+  bV.onclick = () => { touched = true; showVer(true); };
+  showVer(false);
+  new IntersectionObserver((es, o) => es.forEach(e => { if (e.isIntersecting) { setTimeout(() => touched || showVer(true), 2500); o.disconnect(); } }), { threshold: .6 }).observe(ward);
 
-  // ---- case tracker: step through the status flow (illustrative; nothing is saved)
-  const tr = $$('#track li'), tn = $('#track-next'); let at = 0;
-  const showStep = () => {
-    tr.forEach((li, i) => { li.classList.toggle('done', i < at); li.classList.toggle('now', i === at); });
-    $('#track-note').textContent = tr[at].querySelector('span').textContent;
-    tn.dataset.last = at === tr.length - 1 ? '1' : '';
-    tn.textContent = at === tr.length - 1 ? 'Start again' : 'Move to next step';
+  // ---- tabs (all panels stay visible without JS)
+  const tabs = $$('#tabs [role=tab]'), panels = $$('#tabs .panel');
+  const pick = i => tabs.forEach((t, k) => { t.setAttribute('aria-selected', k === i); t.tabIndex = k === i ? 0 : -1; panels[k].hidden = k !== i; });
+  tabs.forEach((t, i) => { t.onclick = () => pick(i); t.onkeydown = e => { const d = { ArrowRight: 1, ArrowLeft: -1 }[e.key]; if (d) { const n = (i + d + tabs.length) % tabs.length; pick(n); tabs[n].focus(); } }; });
+  pick(0);
+
+  // ---- pillar thread + progress bar: each section lists the pillars it is about (data-p)
+  const secs = $$('main section[data-p]'), chips = $$('.pillars a'), bar = $('#prog');
+  const mark = () => {
+    const y = innerHeight * .35, cur = secs.filter(s => s.getBoundingClientRect().top <= y).pop();
+    const p = cur ? cur.dataset.p : '';
+    chips.forEach(c => c.classList.toggle('on', p.includes(c.dataset.p)));
+    bar.style.width = Math.min(100, scrollY / (document.documentElement.scrollHeight - innerHeight) * 100) + '%';
   };
-  tn.onclick = () => { at = (at + 1) % tr.length; showStep(); };
-  tr.forEach((li, i) => li.onclick = () => { at = i; showStep(); });
-  showStep();
-  if (S.demoUrl) { const d = $('#demo-link'); d.href = S.demoUrl; d.hidden = false; }
+  addEventListener('scroll', mark, { passive: true }); mark();
+
+  // ---- sticky visit button hides while the form is on screen
+  new IntersectionObserver(es => $('#sticky').classList.toggle('off', es[0].isIntersecting)).observe($('#visit'));
 
   // ---- estimator: households = population / persons; rate falls smoothly as the city grows
   const P = S.pricing, inr = n => '₹' + Math.round(n).toLocaleString('en-IN');
