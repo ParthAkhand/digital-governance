@@ -6,24 +6,34 @@
   document.title = document.title.replace('City PMU', S.brand);
   $$('[data-company]').forEach(e => e.textContent = S.company);
 
-  // ---- language: English lives in the HTML; Hindi comes only from i18n/hi.json (owner-supplied).
-  // The toggle stays hidden until hi.json has content, so we never ship invented Hindi.
+  // ---- language: English lives in the HTML; Hindi comes from i18n/hi.js (draft, owner to approve).
   const en = new Map($$('[data-i18n]').map(e => [e, e.innerHTML]));
   const setLang = (l, hi = {}) => {
     document.documentElement.lang = l;
     en.forEach((html, e) => { e.innerHTML = l === 'hi' && hi[e.dataset.i18n] ? hi[e.dataset.i18n] : html; });
-    $('#lang').textContent = l === 'hi' ? 'English' : 'हिंदी';
+    $$('#lang span').forEach((s, i) => s.classList.toggle('on', (i === 1) === (l === 'hi')));
     brandize();
     try { localStorage.setItem('lang', l); } catch (_) {}
   };
   brandize();
-  fetch('i18n/hi.json').then(r => r.json()).then(hi => {
-    if (!Object.keys(hi).length) return;
-    const b = $('#lang'); b.style.display = 'inline-flex';
-    b.onclick = () => setLang(document.documentElement.lang === 'hi' ? 'en' : 'hi', hi);
-    let saved; try { saved = localStorage.getItem('lang'); } catch (_) {}
-    if (saved === 'hi') setLang('hi', hi);
-  }).catch(() => {});
+  const hi = window.HI || {};
+  $('#lang').onclick = () => setLang(document.documentElement.lang === 'hi' ? 'en' : 'hi', hi);
+  try { if (localStorage.getItem('lang') === 'hi') setLang('hi', hi); } catch (_) {}
+
+  // ---- theme: follows the system until the button is used
+  const th = $('#theme'), dark = () => document.documentElement.dataset.theme ? document.documentElement.dataset.theme === 'dark' : matchMedia('(prefers-color-scheme:dark)').matches;
+  const SUN = '<svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M2 12h2M20 12h2M5 5l1.5 1.5M17.5 17.5 19 19M5 19l1.5-1.5M17.5 6.5 19 5"/></svg>';
+  const MOON = '<svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><path d="M20 14.5A8 8 0 1 1 9.5 4 6.5 6.5 0 0 0 20 14.5z"/></svg>';
+  const paintTheme = () => { th.innerHTML = dark() ? SUN : MOON; th.title = dark() ? 'Switch to the bright theme' : 'Switch to the dark theme'; th.setAttribute('aria-label', th.title); };
+  th.onclick = () => { const t = dark() ? 'light' : 'dark'; document.documentElement.dataset.theme = t; try { localStorage.setItem('theme', t); } catch (_) {} paintTheme(); };
+  paintTheme();
+
+  // ---- Dashboard links open a prompt that sends people to the live demo
+  const demo = $('#demo');
+  if (S.demoUrl) {
+    $('#demo-go').href = S.demoUrl; $('#demo-x').onclick = () => demo.close();
+    $$('a[href="#p-dashboard"]').forEach(l => l.addEventListener('click', e => { e.preventDefault(); demo.showModal(); }));
+  }
 
   // ---- ward 23: Reported / Verified toggle. Without JS the full table shows.
   const ward = $('#ward'), bR = $('#b-rep'), bV = $('#b-ver'); let touched = false;

@@ -10,7 +10,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Devanagari:wght@400;600&family=Noto+Sans:wght@400;600;700&family=Source+Serif+4:wght@600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles.css">
-<script>document.documentElement.classList.add('js')</script>
+<script>document.documentElement.classList.add('js');try{var t=localStorage.getItem('theme');if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
 </head>
 <body>
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
@@ -25,7 +25,8 @@
     <a class="brand" href="#top"><i></i><span data-brand></span></a>
     <div class="bar-actions">
       <a class="btn ghost sm" href="#estimate" data-i18n="est_link">Estimate</a>
-      <button id="lang" class="btn ghost sm" type="button" aria-label="Language">हिंदी</button>
+      <button id="theme" class="tog icon" type="button" aria-label="Change theme" title="Change theme"></button>
+      <button id="lang" class="tog" type="button" aria-label="Language: English / हिंदी"><span class="on">EN</span><span>हिं</span></button>
       <a class="btn sm" href="#visit" data-i18n="cta_s">Request a visit</a>
     </div>
   </div>
@@ -288,8 +289,14 @@
 </div></footer>
 <a class="btn sticky" id="sticky" href="#visit" data-i18n="cta">Request a half-day visit</a>
 
+<dialog id="demo" aria-labelledby="demo-h">
+  <h3 id="demo-h" data-i18n="demo_h">See the dashboard for yourself</h3>
+  <p data-i18n="demo_p">Open a live demo dashboard for a fictional city. Nothing in it is real city data.</p>
+  <div class="row"><a class="btn" id="demo-go" href="#" target="_blank" rel="noopener" data-i18n="demo_go">Open the demo dashboard</a><button class="btn ghost" type="button" id="demo-x" data-i18n="demo_x">Close</button></div>
+</dialog>
 <script src="config.js"></script>
 <script src="cities.js"></script>
+<script src="i18n/hi.js"></script>
 <script src="app.js"></script>
 </body>
 </html>
