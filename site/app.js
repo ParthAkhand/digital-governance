@@ -28,7 +28,7 @@
   th.onclick = () => { const t = dark() ? 'light' : 'dark'; document.documentElement.dataset.theme = t; try { localStorage.setItem('theme', t); } catch (_) {} paintTheme(); };
   paintTheme();
 
-  // ---- Dashboard links open a prompt that sends people to the live demo
+  // ---- Matrix Track 2.0 links open a prompt that sends people to the live demo
   const demo = $('#demo');
   if (S.demoUrl) {
     $('#demo-go').href = S.demoUrl; $('#demo-x').onclick = () => demo.close();
@@ -102,8 +102,9 @@
     if (d.website) return; // honeypot: drop silently
     const phone = (d.mobile || '').replace(/[\s-]/g, '').replace(/^(\+91|0)/, '');
     const bad = (el, m) => { say(m, 'err'); f.elements[el].focus(); };
-    const empty = ['name', 'designation', 'city'].find(k => !d[k].trim());
+    const empty = ['name', 'designation', 'city', 'email'].find(k => !d[k].trim());
     if (empty) return bad(empty, 'Please fill in all fields.');
+    if (!/^\S+@\S+\.\S+$/.test(d.email.trim())) return bad('email', 'Please enter a valid email address.');
     if (!/^[6-9]\d{9}$/.test(phone)) return bad('mobile', 'Please enter a valid 10-digit mobile number.');
     if (!d.consent) return bad('consent', 'Please tick the consent box so we can contact you.');
     if (!S.formEndpoint) return say('This form is not connected yet.' + (S.fallbackContact ? ' Please contact ' + S.fallbackContact + '.' : ''), 'err');
@@ -113,7 +114,7 @@
       const r = await fetch(S.formEndpoint, { method: 'POST', headers: { 'Content-Type': 'text/plain' }, body: JSON.stringify({ ...d, mobile: phone, page: location.href }) });
       const j = await r.json();
       if (!j.ok) throw 0;
-      f.reset(); say('Thank you. We will call you to fix the visit.', 'ok');
+      f.reset(); say('Thank you. We will contact you to fix the demo time.', 'ok');
     } catch (_) {
       say('Could not send. Please try again' + (S.fallbackContact ? ' or contact ' + S.fallbackContact : '') + '.', 'err');
     } finally { btn.disabled = false; }
