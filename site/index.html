@@ -5,159 +5,229 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>City PMU: one verified picture of your city's sanitation</title>
 <meta name="description" content="One verified picture every week: what each contractor or zone reported, what an independent field team found, and what to do about the gap.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath fill='%231f4fa3' d='M8 1l7 7-7 7-7-7z'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Devanagari:wght@400;600&family=Noto+Sans:wght@400;600;700&family=Source+Serif+4:wght@600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles.css">
-<script>document.documentElement.classList.add('js')</script>
+<script>document.documentElement.classList.add('js');try{var t=localStorage.getItem('theme');if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
 </head>
 <body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-t" viewBox="0 0 24 24"><path d="M12 22s7-6.2 7-12a7 7 0 1 0-14 0c0 5.8 7 12 7 12z" fill="none" stroke="currentColor" stroke-width="2"/><path d="m8.8 10 2.4 2.4 4-4.4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="i-d" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="2" fill="none" stroke="currentColor" stroke-width="2"/><path d="M8 17v-4M12 17V8M16 17v-6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></symbol>
+  <symbol id="i-p" viewBox="0 0 24 24"><path d="M12 3 4 6v6c0 4.5 3.4 8 8 9 4.6-1 8-4.5 8-9V6z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="M9 12l2 2 4-4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+</svg>
+
+<a class="skip" href="#top" data-i18n="skip">Skip to content</a>
 <header class="top">
-  <div class="wrap">
+  <div class="wrap bar">
     <a class="brand" href="#top"><i></i><span data-brand></span></a>
     <div class="bar-actions">
-      <button id="lang" class="btn ghost" type="button" aria-label="Language">हिंदी</button>
-      <a class="btn" href="#visit" data-i18n="cta">Request a visit</a>
+      <a class="btn ghost sm" href="#estimate" data-i18n="est_link">Estimate</a>
+      <button id="theme" class="tog icon" type="button" aria-label="Change theme" title="Change theme"></button>
+      <button id="lang" class="tog" type="button" aria-label="Language: English / हिंदी"><span class="on">EN</span><span>हिं</span></button>
+      <a class="btn sm" href="#visit" data-i18n="cta_s">Request a visit</a>
     </div>
   </div>
+  <nav class="wrap pillars" aria-label="Task Force, Dashboard, PMU">
+    <a href="#p-taskforce" data-p="t"><svg><use href="#i-t"/></svg><span data-i18n="pl_t">Task Force</span></a>
+    <a href="#p-dashboard" data-p="d"><svg><use href="#i-d"/></svg><span data-i18n="pl_d">Dashboard</span></a>
+    <a href="#independent" data-p="p"><svg><use href="#i-p"/></svg><span>PMU</span></a>
+  </nav>
+  <div class="prog" aria-hidden="true"><i id="prog"></i></div>
 </header>
 
-<main id="top">
-<section class="hero">
-  <div class="wrap hero-grid">
-    <div>
-      <h1 data-i18n="h1">One verified picture of your city's sanitation, every week</h1>
-      <p class="lede" data-i18n="lede">What each contractor or zone reported. What an independent field team found. What to do about the gap. Live within 30 days of the work order.</p>
-      <div class="cta">
-        <a class="btn" href="#visit" data-i18n="cta">Request a visit</a>
-        <a class="btn ghost" href="#thirty" data-i18n="seeplan">See the 30 days</a>
-      </div>
-    </div>
-    <div class="ward compact" id="ward">
-      <div class="ward-head">
-        <h3 data-i18n="w_title">Ward 23, one week</h3>
-        <span class="tag" data-i18n="illus">Illustrative</span>
-      </div>
-      <div class="legend"><span><b style="background:var(--reported)"></b><span data-i18n="rep">Reported</span></span><span><b style="background:var(--accent)"></b><span data-i18n="ver">Verified</span></span></div>
-      <div class="row" data-rep="96" data-ver="81" data-max="100" data-unit="%"><div class="name" data-i18n="m1">Door-to-door coverage</div><div class="tracks"></div><span class="gap" data-i18n="g1">15 points</span></div>
-      <div class="row" data-rep="100" data-ver="88" data-max="100" data-unit="%"><div class="name" data-i18n="m2">Sweeping beats completed</div><div class="tracks"></div><span class="gap" data-i18n="g2">12 points</span></div>
-      <div class="row" data-rep="2" data-ver="7" data-max="10" data-unit=""><div class="name" data-i18n="m3">Garbage points open</div><div class="tracks"></div><span class="gap" data-i18n="g3">5 more</span></div>
-      <div class="row" data-rep="92" data-ver="74" data-max="100" data-unit=""><div class="name" data-i18n="m4">Public toilet score</div><div class="tracks"></div><span class="gap" data-i18n="g4">18 points</span></div>
-      <div class="row" data-rep="95" data-ver="79" data-max="100" data-unit="%"><div class="name" data-i18n="m5">Complaints closed in time</div><div class="tracks"></div><span class="gap" data-i18n="g5">16 points</span></div>
-      <div class="ward-foot">
-        <span data-i18n="w_note">Illustrative figures. After a half-day visit we show this page for two of your own wards.</span>
-        <button class="btn ghost" id="reveal" type="button" data-i18n="reveal">Show what our field team found</button>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section id="case" class="band">
+<main id="top" tabindex="-1">
+<section class="hero" data-p="tdp">
   <div class="wrap">
-    <div class="eyebrow center" data-i18n="k_eyebrow">How one case moves</div>
-    <h2 class="center" data-i18n="k_h">From a reported figure to a fix you can see.</h2>
-    <ol class="steps track" id="track">
-      <li><b data-i18n="k1">Reported</b><span data-i18n="k1x">The contractor or zone marks the work as done.</span></li>
-      <li><b data-i18n="k2">Checked on the ground</b><span data-i18n="k2x">An independent team photographs the spot, with the time and place on the photo.</span></li>
-      <li><b data-i18n="k3">Verified</b><span data-i18n="k3x">Recorded as clean or not clean, apart from what was reported.</span></li>
-      <li><b data-i18n="k4">Action required</b><span data-i18n="k4x">You send the case to the team that must fix it.</span></li>
-      <li><b data-i18n="k5">Fixed</b><span data-i18n="k5x">The team uploads a new photo of the same place.</span></li>
-      <li class="last"><b data-i18n="k6">Confirmed</b><span data-i18n="k6x">You check the photo. The ward score updates.</span></li>
+    <h1><span data-brand></span>: <span data-i18n="h1">one verified picture of your city's sanitation, every week</span></h1>
+    <p class="lede" data-i18n="lede"><span data-brand></span> gives the Commissioner one verified picture every week: what each contractor or zone reported, what an independent field team found, and what to do about the gap. It is live within 30 days of the work order.</p>
+    <ol class="system" aria-label="Task Force, Dashboard, PMU">
+      <li><a href="#p-taskforce"><svg><use href="#i-t"/></svg><b data-i18n="pl_t">Task Force</b></a></li>
+      <li class="arrow" aria-hidden="true">→</li>
+      <li><a href="#p-dashboard"><svg><use href="#i-d"/></svg><b data-i18n="pl_d">Dashboard</b></a></li>
+      <li class="arrow" aria-hidden="true">→</li>
+      <li><a href="#independent"><svg><use href="#i-p"/></svg><b>PMU</b></a></li>
     </ol>
-    <div class="track-bar">
-      <p class="note" id="track-note" aria-live="polite"></p>
-      <button class="btn" id="track-next" type="button" data-i18n="k_next">Move to next step</button>
-      <a class="btn ghost" id="demo-link" href="#" hidden target="_blank" rel="noopener" data-i18n="k_demo">Open the clickable demo</a>
+    <div class="cta">
+      <a class="btn big" href="#visit" data-i18n="cta">Request a half-day visit</a>
+      <a class="textlink" href="#week" data-i18n="seeweek">See what you get every week</a>
     </div>
-    <p class="note center" data-i18n="k_note">Illustrative case. Every number opens the photos, place and time behind it.</p>
   </div>
 </section>
 
-<section id="problem">
+<section id="problem" data-p="t">
   <div class="wrap">
-    <h2 class="center" data-i18n="p_h">Every city runs on reports that nobody independent checks.</h2>
+    <h2 data-i18n="p_h">The problem it solves</h2>
+    <p class="lede" data-i18n="p_l">Every city runs on reports that nobody independent checks.</p>
     <div class="cols3">
       <div class="card"><div class="n">01</div><h3 data-i18n="p1h">Reports and the ground differ.</h3><p data-i18n="p1">Contractors and zones report their own work. No independent team verifies it daily.</p></div>
       <div class="card"><div class="n">02</div><h3 data-i18n="p2h">Decisions run on claims.</h3><p data-i18n="p2">Bills are passed and staff are assessed on self-reported figures, so a review becomes one opinion against another.</p></div>
-      <div class="card"><div class="n">03</div><h3 data-i18n="p3h">The gap costs marks.</h3><p data-i18n="p3">The Swachh Survekshan toolkit deducts marks when a city's portal claims do not match the field assessment.</p></div>
+      <div class="card"><div class="n">03</div><h3 data-i18n="p3h">The gap costs marks.</h3><p data-i18n="p3">The <a href="https://sbmurban.org/storage/app/media/pdf/Swachh%20Survekshan%202025-26%20Toolkit.pdf" target="_blank" rel="noopener">Swachh Survekshan toolkit</a> deducts marks when a city's portal claims do not match the field assessment. PRAGATI-50 cities are tracked on 48 indicators.</p></div>
     </div>
   </div>
 </section>
 
-<section id="independent" class="band">
+<section id="week" class="band" data-p="tdp">
+  <div class="wrap">
+    <h2 data-i18n="w_h">What you see every week</h2>
+    <p class="lede"><svg class="ic"><use href="#i-p"/></svg><span data-i18n="w_l">One page for each ward, contractor and zone: what was reported, and what our field team found.</span></p>
+    <div class="ward" id="ward">
+      <div class="seg" role="group" aria-label="View">
+        <button type="button" id="b-rep" aria-pressed="true" data-i18n="rep">Reported</button>
+        <button type="button" id="b-ver" aria-pressed="false" data-i18n="ver">Verified</button>
+      </div>
+      <table class="tbl">
+        <caption><span data-i18n="w_cap">Ward 23, one week</span> <span class="tag" data-i18n="illus">(illustrative)</span></caption>
+        <thead><tr>
+          <th scope="col" data-i18n="w_col">Measure</th>
+          <th scope="col" data-i18n="rep">Reported</th>
+          <th scope="col" class="v"><span class="pl"><svg><use href="#i-t"/></svg><span data-i18n="pl_t">Task Force</span></span><span data-i18n="ver">Verified</span></th>
+          <th scope="col" class="v"><span class="pl"><svg><use href="#i-d"/></svg><span data-i18n="pl_d">Dashboard</span></span><span data-i18n="gap">Gap</span></th>
+        </tr></thead>
+        <tbody>
+          <tr><th scope="row" data-i18n="m1">Door-to-door coverage</th><td>96%</td><td class="v">81%</td><td class="v g" data-i18n="g1">15 points</td></tr>
+          <tr><th scope="row" data-i18n="m2">Sweeping beats completed</th><td>100%</td><td class="v">88%</td><td class="v g" data-i18n="g2">12 points</td></tr>
+          <tr><th scope="row" data-i18n="m3">Garbage points open</th><td>2</td><td class="v">7</td><td class="v g" data-i18n="g3">5 more</td></tr>
+          <tr><th scope="row" data-i18n="m4">Public toilet score</th><td>92</td><td class="v">74</td><td class="v g" data-i18n="g4">18 points</td></tr>
+          <tr><th scope="row" data-i18n="m5">Complaints closed in time</th><td>95%</td><td class="v">79%</td><td class="v g" data-i18n="g5">16 points</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="note"><span data-i18n="w_note">These figures are illustrative. After a half-day visit we show this page for two of your own wards.</span></p>
+  </div>
+</section>
+
+<section id="independent" data-p="p">
   <div class="wrap split">
     <div>
-      <div class="eyebrow" data-i18n="i_eyebrow">Why it has to be independent</div>
-      <h2 data-i18n="i_h">A verified picture can only come from a team with no stake in it.</h2>
-      <p class="lede" data-i18n="i4"><span data-brand></span> reports only to you and runs none of the services it checks. One contract, one accountable team.</p>
+      <h2 data-i18n="i_h">Why it has to be independent</h2>
+      <p class="lede" data-i18n="i_l">A verified picture can only come from a team with no stake in it.</p>
     </div>
-    <ul class="ticks">
-      <li data-i18n="i1">The team that wrote the plan cannot certify how it was carried out.</li>
-      <li data-i18n="i2">A dashboard shows what contractors and departments enter. It does not check it.</li>
-      <li data-i18n="i3">An agency working in a ward cannot inspect that ward.</li>
+    <div>
+      <ul class="ticks">
+        <li data-i18n="i1">The team that wrote the plan cannot certify how it was carried out.</li>
+        <li data-i18n="i2">A dashboard shows what contractors and departments enter. It does not check it.</li>
+        <li data-i18n="i3">An agency working in a ward cannot inspect that ward.</li>
+      </ul>
+      <p class="closing"><svg class="ic"><use href="#i-p"/></svg><span data-i18n="i4"><span data-brand></span> reports only to the Commissioner and runs none of the services it checks. It comes as one contract with one accountable team, and the first verified review is due on day 30.</span></p>
+    </div>
+  </div>
+</section>
+
+<section id="fit" class="band" data-p="pd">
+  <div class="wrap">
+    <h2 data-i18n="f_h">It fits how your city works</h2>
+    <p class="lede" data-i18n="f_l">The method is the same whether the city uses contractors, its own fleet and staff, or both. Only the party being checked changes.</p>
+    <div class="tabs" id="tabs">
+      <div role="tablist" aria-label="Fit">
+        <button role="tab" type="button" data-i18n="f1a">Contractors</button>
+        <button role="tab" type="button" data-i18n="f2a">Its own fleet and staff</button>
+        <button role="tab" type="button" data-i18n="f3a">Both</button>
+      </div>
+      <div role="tabpanel" class="panel"><dl>
+        <dt data-i18n="f_who">Who reports</dt><dd data-i18n="f1b">Each contractor</dd>
+        <dt data-i18n="f_iss">What the PMU issues</dt><dd data-i18n="f1c">A performance certificate, with the deduction the contract allows, before the bill is passed</dd></dl></div>
+      <div role="tabpanel" class="panel"><dl>
+        <dt data-i18n="f_who">Who reports</dt><dd data-i18n="f2b">Each zone and ward supervisor</dd>
+        <dt data-i18n="f_iss">What the PMU issues</dt><dd data-i18n="f2c">A verified weekly score for every ward and supervisor</dd></dl></div>
+      <div role="tabpanel" class="panel"><dl>
+        <dt data-i18n="f_who">Who reports</dt><dd data-i18n="f3b">Contractors and zones</dd>
+        <dt data-i18n="f_iss">What the PMU issues</dt><dd data-i18n="f3c">Both, on one screen</dd></dl></div>
+    </div>
+    <p class="note" data-i18n="f_note">The certificate and the score are recommendations. Payment and disciplinary authority stay with the city's officers.</p>
+  </div>
+</section>
+
+<section id="gets" data-p="dt">
+  <div class="wrap">
+    <h2 data-i18n="g_h">What the Commissioner gets</h2>
+    <p class="lede" data-i18n="g_l">The same outputs arrive on the same calendar in every city.</p>
+    <ol class="timeline">
+      <li><b data-i18n="c1a">Day 14</b><span data-i18n="c1b">A register of every contract and duty roster, each reduced to a one-page KPI sheet</span></li>
+      <li id="p-dashboard" class="hl"><b data-i18n="c2a">Day 15</b><span><svg class="ic"><use href="#i-d"/></svg><span data-i18n="c2b">Dashboard live, with logins for the Commissioner, zonal officers and each contractor</span></span></li>
+      <li><b data-i18n="c3a">Day 30</b><span data-i18n="c3b">City baseline report, the first scorecard and a ward-wise action plan</span></li>
+      <li id="p-taskforce" class="hl"><b data-i18n="c4a">Every day</b><span><svg class="ic"><use href="#i-t"/></svg><span data-i18n="c4b">Independent, geo-tagged checks in every ward; every closed complaint re-inspected</span></span></li>
+      <li><b data-i18n="c5a">Every week</b><span data-i18n="c5b">A review pack: the city scorecard and one page per contractor or zone</span></li>
+      <li><b data-i18n="c6a">Every month</b><span data-i18n="c6b">Performance certificates or ward scores; Swachhatam portal data checked before upload</span></li>
+      <li><b data-i18n="c7a">Before each state or ministry review</b><span data-i18n="c7b">A brief with the verified position</span></li>
+    </ol>
+    <details class="score">
+      <summary data-i18n="s_h">The scorecard</summary>
+      <p data-i18n="s_l">Every measure is shown twice: as reported and as verified.</p>
+      <table class="tbl">
+        <thead><tr><th scope="col" data-i18n="s_a">Area</th><th scope="col" data-i18n="s_m">Measures</th></tr></thead>
+        <tbody>
+          <tr><th scope="row" data-i18n="s1a">Collection and transport</th><td data-i18n="s1b">Door-to-door coverage, source segregation, vehicle trips</td></tr>
+          <tr><th scope="row" data-i18n="s2a">Visible cleanliness</th><td data-i18n="s2b">Sweeping beats, garbage vulnerable points, litter bins, drains</td></tr>
+          <tr><th scope="row" data-i18n="s3a">Sanitation</th><td data-i18n="s3b">Public and community toilets</td></tr>
+          <tr><th scope="row" data-i18n="s4a">Processing</th><td data-i18n="s4b">Tonnes processed against tonnes received</td></tr>
+          <tr><th scope="row" data-i18n="s5a">Citizens</th><td data-i18n="s5b">Complaints closed in time, share reopened</td></tr>
+          <tr><th scope="row" data-i18n="s6a">Workforce</th><td data-i18n="s6b">Staff present against staff sanctioned or contracted</td></tr>
+          <tr><th scope="row" data-i18n="s7a">Awareness</th><td data-i18n="s7b">IEC activities held against planned</td></tr>
+        </tbody>
+      </table>
+      <p class="note" data-i18n="s_n">These measures cover seven of the ten Swachh Survekshan 2025-26 sections, which carry 8,000 of the 10,500 field marks.</p>
+    </details>
+  </div>
+</section>
+
+<section id="thirty" class="band" data-p="dt">
+  <div class="wrap">
+    <h2 data-i18n="t_h">Live in 30 days</h2>
+    <p class="lede" data-i18n="t_g">Work order to first Commissioner review in 30 days</p>
+    <p class="note" data-i18n="t_s">30-day setup · 4 phases, 3 gates</p>
+    <ol class="phases">
+      <li><small data-i18n="ph1d">Days 1-5</small><b data-i18n="ph1">Mobilise</b><ul><li data-i18n="ph1a">Team lead on site</li><li data-i18n="ph1b">Contracts, rosters in</li><li data-i18n="ph1c">City data collected</li></ul></li>
+      <li><small data-i18n="ph2d">Days 6-14</small><b data-i18n="ph2">Configure</b><ul><li data-i18n="ph2a">Wards and beats mapped</li><li data-i18n="ph2b">KPI sheets written</li><li data-i18n="ph2c">Task Force trained</li></ul></li>
+      <li class="gate"><small data-i18n="ph3d">Days 15-21</small><b data-i18n="ph3">Go live</b><ul><li data-i18n="ph3a">Ward checks start</li><li data-i18n="ph3b">Daily reporting starts</li><li data-i18n="ph3c">First weekly review</li></ul></li>
+      <li class="gate"><small data-i18n="ph4d">Days 22-30</small><b data-i18n="ph4">Baseline</b><ul><li data-i18n="ph4a">Baseline report</li><li data-i18n="ph4b">City scorecard</li><li data-i18n="ph4c">Ward action plan</li></ul></li>
+    </ol>
+    <ul class="miles">
+      <li data-i18n="mi1">Day 0: work order and letter</li>
+      <li data-i18n="mi2">Day 15: dashboard live</li>
+      <li data-i18n="mi3">Day 30: first Commissioner review</li>
     </ul>
+    <p class="lede" data-i18n="t_p">The dashboard goes live on day 15 with Task Force checks. Reporting by contractors and zones joins in the third week, and day 30 is the first full review.</p>
   </div>
 </section>
 
-<section id="fit">
+<section id="need" data-p="p">
   <div class="wrap">
-    <div class="eyebrow center" data-i18n="f_eyebrow">It fits how your city works</div>
-    <h2 class="center" data-i18n="f_h">Contractors, your own staff, or both. Only the party being checked changes.</h2>
-    <div class="cols3">
-      <div class="card"><h3 data-i18n="f1a">Contractors</h3><p data-i18n="f1c">Each contractor reports. You receive a performance certificate, with the deduction the contract allows, before the bill is passed.</p></div>
-      <div class="card"><h3 data-i18n="f2a">Your own fleet and staff</h3><p data-i18n="f2c">Each zone and ward supervisor reports. You receive a verified weekly score for every ward and supervisor.</p></div>
-      <div class="card"><h3 data-i18n="f3a">Both</h3><p data-i18n="f3c">Contractors and zones on one screen.</p></div>
-    </div>
-    <p class="note center" data-i18n="f_note">Certificates and scores are recommendations. Payment and disciplinary authority stay with the city's officers.</p>
-  </div>
-</section>
-
-<section id="gets" class="band">
-  <div class="wrap">
-    <div class="eyebrow center" data-i18n="g_eyebrow">What you get</div>
-    <h2 class="center" data-i18n="g_h">The same outputs, on the same calendar, in every city.</h2>
-    <div class="cols4">
-      <div class="card"><div class="n" data-i18n="c4a">Every day</div><p data-i18n="c4b">Independent, geo-tagged checks in every ward; every closed complaint re-inspected.</p></div>
-      <div class="card"><div class="n" data-i18n="c5a">Every week</div><p data-i18n="c5b">A review pack: the city scorecard and one page per contractor or zone.</p></div>
-      <div class="card"><div class="n" data-i18n="c6a">Every month</div><p data-i18n="c6b">Performance certificates or ward scores; portal data checked before upload.</p></div>
-      <div class="card"><div class="n" data-i18n="c7a">Before each state or ministry review</div><p data-i18n="c7b">A brief with the verified position.</p></div>
-    </div>
-  </div>
-</section>
-
-<section id="thirty">
-  <div class="wrap">
-    <div class="eyebrow center" data-i18n="t_eyebrow">Live in 30 days</div>
-    <h2 class="center" data-i18n="t_h">From work order to first full review in 30 days</h2>
-    <ol class="steps">
-      <li><b data-i18n="ph1">Mobilise</b><small data-i18n="ph1d">Days 1-5</small><span data-i18n="ph1x">Team on site, contracts and city data in</span></li>
-      <li><b data-i18n="ph2">Configure</b><small data-i18n="ph2d">Days 6-14</small><span data-i18n="ph2x">Wards and beats mapped, Task Force trained</span></li>
-      <li class="gate"><b data-i18n="ph3">Go live</b><small data-i18n="ph3d">Days 15-21</small><span data-i18n="ph3x">Dashboard live, ward checks and daily reporting start</span></li>
-      <li class="gate last"><b data-i18n="ph4">Baseline</b><small data-i18n="ph4d">Days 22-30</small><span data-i18n="ph4x">Baseline report, city scorecard, ward action plan</span></li>
+    <h2 data-i18n="n_h">What we need from the city</h2>
+    <p class="lede" data-i18n="n_l">The 30 days start when the first three items are in hand.</p>
+    <ol class="list">
+      <li data-i18n="n1">A work order, and a letter from the Commissioner naming the PMU as the monitoring unit with access to contractor and zone data.</li>
+      <li data-i18n="n2">Copies of every SWM contract in force, and the duty rosters for the city's own staff and vehicles.</li>
+      <li data-i18n="n3">Ward, beat, route, vehicle and asset data, in the format we send.</li>
+      <li data-i18n="n4">A written direction to each contractor and zone to report on the dashboard within 15 days.</li>
+      <li data-i18n="n5">A nodal officer, seating and internet for the team, and a fixed weekly review slot with the Commissioner.</li>
     </ol>
   </div>
 </section>
 
-<section id="not" class="band">
+<section id="not" class="band" data-p="p">
   <div class="wrap">
-    <h2 class="center" data-i18n="x_h">What we do not do</h2>
+    <h2 data-i18n="x_h">What the PMU does not do</h2>
     <ul class="chips">
-      <li data-i18n="x1">We do not run any service, hire or pay field staff, or pass bills.</li>
-      <li data-i18n="x2">We do not supply hardware such as cameras, GPS devices or video walls.</li>
-      <li data-i18n="x4">We do not design a project and then bid for it.</li>
+      <li data-i18n="x1">It does not run any service, hire or pay field staff, or pass bills.</li>
+      <li data-i18n="x2">It does not supply hardware such as cameras, GPS devices or video walls.</li>
+      <li data-i18n="x3">It does not check its own group's work. Where <span data-company></span> holds any other contract in the city, that contract is reviewed by the city's officers, not by the PMU.</li>
+      <li data-i18n="x4">It does not design a project and then bid for it.</li>
     </ul>
   </div>
 </section>
 <!-- PLACEHOLDER: "Why Human Matrix" credentials section stays out until the owner confirms them in writing. -->
 
-<section id="estimate">
-  <div class="wrap split">
-    <div>
-      <div class="eyebrow" data-i18n="e_eyebrow">Indicative estimate</div>
-      <h2 data-i18n="e_h">What it would cost for your city</h2>
-      <p class="lede" data-i18n="e_p">Priced per household per month, so it scales with the size of your city. Pick your state and city for an indicative figure.</p>
-    </div>
-    <div class="formcard" id="calc">
+<section id="next" data-p="pdt">
+  <div class="wrap">
+    <h2 data-i18n="e_h">Commercials and next step</h2>
+    <p class="lede" data-i18n="e_p">The fee is set per household per month, so it scales with the size of the city.</p>
+    <p data-i18n="e_p2">The city engages the PMU through its own tender. We share a model scope of work and evaluation framework that the city can adapt.</p>
+    <p><b data-i18n="e_nx">Next step.</b> <span data-i18n="e_nx2">A half-day visit to the control room and two wards. Within a week we return a city sheet with what we saw and a firm quote.</span></p>
+    <div class="formcard" id="estimate">
+      <h3 data-i18n="e_t">Approximate cost for your city</h3>
       <label for="c-state" data-i18n="e_state">State</label>
       <select id="c-state"><option value="" data-i18n="e_pick_s">Select state</option></select>
       <label for="c-city" data-i18n="e_city">City</label>
@@ -167,22 +237,23 @@
           <div><dt data-i18n="e_pop">Population (Census 2011)</dt><dd id="o-pop"></dd></div>
           <div><dt data-i18n="e_hh">Households (approx.)</dt><dd id="o-hh"></dd></div>
           <div><dt data-i18n="e_rate">Rate per household per month</dt><dd id="o-rate"></dd></div>
-          <div class="big"><dt data-i18n="e_month">Monthly fee, before GST</dt><dd id="o-fee"></dd></div>
-          <div><dt data-i18n="e_year">Annual value, before GST</dt><dd id="o-year"></dd></div>
+          <div class="big"><dt data-i18n="e_month">Monthly fee, before GST (approximate)</dt><dd id="o-fee"></dd></div>
+          <div><dt data-i18n="e_year">Annual value, before GST (approximate)</dt><dd id="o-year"></dd></div>
         </dl>
         <p class="note" id="o-min" hidden data-i18n="e_min">The monthly minimum applies to a city of this size.</p>
+        <a class="btn big" href="#visit" data-i18n="cta">Request a half-day visit</a>
       </div>
-      <p class="note" data-i18n="e_note">Indicative only: households are estimated from Census 2011 population. A firm quote follows the half-day visit.</p>
+      <p class="note" data-i18n="e_note">Approximate: households are estimated from Census 2011 population. A firm quote follows the half-day visit.</p>
     </div>
   </div>
 </section>
 
-<section id="visit">
+<section id="visit" class="band" data-p="">
   <div class="wrap split">
     <div>
       <div class="eyebrow" data-i18n="v_eyebrow">Next step</div>
       <h2 data-i18n="v_h">A half-day visit to the control room and two wards.</h2>
-      <p class="lede" data-i18n="v_p">Within a week we return a city sheet with what we saw and a firm quote. Priced per household per month, so it scales with the size of your city.</p>
+      <p class="lede" data-i18n="v_p">Within a week we return a city sheet with what we saw and a firm quote.</p>
     </div>
     <form class="formcard" id="form" novalidate>
       <label for="f-name" data-i18n="l_name">Your name</label>
@@ -201,18 +272,31 @@
       </select>
       <div class="hp" aria-hidden="true"><label>Leave empty <input name="website" tabindex="-1" autocomplete="off"></label></div>
       <label class="check"><input type="checkbox" name="consent" required><span data-i18n="l_consent">I agree to be contacted about this visit. My details will be used only for that.</span></label>
-      <button class="btn" type="submit" style="margin-top:18px;width:100%" data-i18n="send">Request a visit</button>
+      <button class="btn big" type="submit" style="margin-top:18px;width:100%" data-i18n="send">Request a half-day visit</button>
       <div id="status" role="status" aria-live="polite"></div>
     </form>
   </div>
 </section>
 </main>
 
-<footer><div class="wrap"><span data-brand></span> · <span id="company"></span><br><span data-i18n="src">Sources: Swachh Survekshan 2025-26 Toolkit (MoHUA); PRAGATI-50 targets (Indian Masterminds)</span></div></footer>
-<a class="btn sticky" href="#visit" data-i18n="cta">Request a visit</a>
+<footer><div class="wrap">
+  <div data-i18n="src_h">Sources</div>
+  <ul>
+    <li><a href="https://sbmurban.org/storage/app/media/pdf/Swachh%20Survekshan%202025-26%20Toolkit.pdf" target="_blank" rel="noopener">Swachh Survekshan 2025-26 Toolkit</a> (MoHUA): <span data-i18n="src1">section marks and the penalty for portal mismatches</span></li>
+    <li><a href="https://indianmasterminds.com/tag/pragati-50/" target="_blank" rel="noopener">PRAGATI-50 targets</a> (Indian Masterminds): <span data-i18n="src2">the 48 indicators</span></li>
+  </ul>
+  <span data-brand></span> · <span data-company></span>
+</div></footer>
+<a class="btn sticky" id="sticky" href="#visit" data-i18n="cta">Request a half-day visit</a>
 
+<dialog id="demo" aria-labelledby="demo-h">
+  <h3 id="demo-h" data-i18n="demo_h">See the dashboard for yourself</h3>
+  <p data-i18n="demo_p">Open a live demo dashboard for a fictional city. Nothing in it is real city data.</p>
+  <div class="row"><a class="btn" id="demo-go" href="#" target="_blank" rel="noopener" data-i18n="demo_go">Open the demo dashboard</a><button class="btn ghost" type="button" id="demo-x" data-i18n="demo_x">Close</button></div>
+</dialog>
 <script src="config.js"></script>
 <script src="cities.js"></script>
+<script src="i18n/hi.js"></script>
 <script src="app.js"></script>
 </body>
 </html>
