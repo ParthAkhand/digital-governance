@@ -178,3 +178,7 @@ footer ul{margin:6px 0 14px;padding-left:1.1em}
 }
 @media(prefers-reduced-motion:reduce){.sticky{transition:none}}
 .brand{white-space:nowrap}
+.skip{position:absolute;left:8px;top:-60px;z-index:50;background:var(--accent);color:var(--accent-ink);padding:12px 16px;border-radius:6px;font-weight:600}
+.skip:focus{top:8px}
+footer li a{display:inline-block;min-height:44px;line-height:44px}
+main:focus{outline:none}

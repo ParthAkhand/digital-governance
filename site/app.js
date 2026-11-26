@@ -89,11 +89,13 @@
   f.addEventListener('submit', async e => {
     e.preventDefault();
     const d = Object.fromEntries(new FormData(f));
-    if (d.website) return; // honeypot
+    if (d.website) return; // honeypot: drop silently
     const phone = (d.mobile || '').replace(/[\s-]/g, '').replace(/^(\+91|0)/, '');
-    if (!d.name.trim() || !d.designation.trim() || !d.city.trim()) return say('Please fill in all fields.', 'err');
-    if (!/^[6-9]\d{9}$/.test(phone)) return say('Please enter a valid 10-digit mobile number.', 'err');
-    if (!d.consent) return say('Please tick the consent box so we can contact you.', 'err');
+    const bad = (el, m) => { say(m, 'err'); f.elements[el].focus(); };
+    const empty = ['name', 'designation', 'city'].find(k => !d[k].trim());
+    if (empty) return bad(empty, 'Please fill in all fields.');
+    if (!/^[6-9]\d{9}$/.test(phone)) return bad('mobile', 'Please enter a valid 10-digit mobile number.');
+    if (!d.consent) return bad('consent', 'Please tick the consent box so we can contact you.');
     if (!S.formEndpoint) return say('This form is not connected yet.' + (S.fallbackContact ? ' Please contact ' + S.fallbackContact + '.' : ''), 'err');
     const btn = $('button[type=submit]', f); btn.disabled = true; say('Sending…', '');
     try {
